@@ -155,6 +155,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/27/1252-%E5%A5%87%E6%95%B0%E5%80%BC%E5%8D%95%E5%85%83%E6%A0%BC%E7%9A%84%E6%95%B0%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XendXBY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XendXBY的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/27/1252-%E5%A5%87%E6%95%B0%E5%80%BC%E5%8D%95%E5%85%83%E6%A0%BC%E7%9A%84%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">1252.奇数值单元格的数目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-27 09:34:53 / 修改时间：10:13:48" itemprop="dateCreated datePublished" datetime="2020-09-27T09:34:53+08:00">2020-09-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8A%9B%E6%89%A3/" itemprop="url" rel="index"><span itemprop="name">力扣</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cells-with-odd-values-in-a-matrix">https://leetcode-cn.com/problems/cells-with-odd-values-in-a-matrix</a></p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给你一个 n 行 m 列的矩阵，最开始的时候，每个单元格中的值都是 0。<br>另有一个索引数组 indices，indices[i] = [ri, ci] 中的 ri 和 ci 分别表示指定的行和列（从 0 开始编号）。<br>你需要将每对 [ri, ci] 指定的行和列上的所有单元格的值加 1。<br>请你在执行完所有 indices 指定的增量操作后，返回矩阵中 「奇数值单元格」 的数目。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><p>输入：n = 2, m = 3, indices = [[0,1],[1,1]]<br>输出：6<br>解释：最开始的矩阵是 [[0,0,0],[0,0,0]]。<br>第一次增量操作后得到 [[1,2,1],[0,1,0]]。<br>最后的矩阵是 [[1,3,1],[1,3,1]]，里面有 6 个奇数。</p>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><p>输入：n = 2, m = 2, indices = [[1,1],[0,0]]<br>输出：0<br>解释：最后的矩阵是 [[2,2],[2,2]]，里面没有奇数。</p>
+<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>1 &lt;= n &lt;= 50<br>1 &lt;= m &lt;= 50<br>1 &lt;= indices.length &lt;= 100<br>0 &lt;= indices[i][0] &lt; n<br>0 &lt;= indices[i][1] &lt; m</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="纯暴力算法"><a href="#纯暴力算法" class="headerlink" title="纯暴力算法"></a>纯暴力算法</h2><p>根据题目描述，我们很容易得到纯暴力的思路：每得到一对<code>[ri, ci]</code>，就将其所对应行列的每一个数都加1。再做思考，其实我们并不需要真的“加1”——题目只需统计奇偶性，我们只需要用<code>bool</code>类型的数组来储存就可以了。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">oddCells</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; indices)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; <span class="title">table</span><span class="params">(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(m, <span class="literal">false</span>))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> <span class="built_in">pair</span>: indices) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> x: table[<span class="built_in">pair</span>[<span class="number">0</span>]])</span><br><span class="line">                x = !x;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">                table[i][<span class="built_in">pair</span>[<span class="number">1</span>]] = !table[i][<span class="built_in">pair</span>[<span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> <span class="built_in">list</span>: table) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> x: <span class="built_in">list</span>)</span><br><span class="line">                <span class="keyword">if</span>(x)</span><br><span class="line">                    cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>一个标准的暴力程序就诞生了。</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>这么做显然会很慢。我们可以用两个数组<code>r[]</code>和<code>c[]</code>，分别记录每一行每一列被“加1”的次数。和前面一样，我们只需用<code>bool</code>类型来维护就可以了。记录之后，我们便发现：如果<code>r[i]</code>和<code>c[i]</code>一真一假，那么“加1”的次数为奇数，那么最后这个位置自然就是奇数了。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">oddCells</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; indices)</span> </span>&#123;</span><br><span class="line">        vector&lt;bool&gt; r(n, false), c(m, false);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> <span class="built_in">pair</span>: indices) &#123;</span><br><span class="line">            r[<span class="built_in">pair</span>[<span class="number">0</span>]] = !r[<span class="built_in">pair</span>[<span class="number">0</span>]];</span><br><span class="line">            c[<span class="built_in">pair</span>[<span class="number">1</span>]] = !c[<span class="built_in">pair</span>[<span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">                <span class="keyword">if</span>(r[i] != c[j])</span><br><span class="line">                    cnt++;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a>进一步优化</h2><p>其实我们不需要在记录后再逐行逐个进行判断：如果我们知道了有几行为<code>true</code>，那么只要是列为<code>false</code>，这个位置都会满足条件。也就是说，<strong>我们只需要分别统计行列<code>true</code>或<code>false</code>的个数</strong>，最后再进行数学计算，就可以得到答案。我们甚至可以实时更新这个个数，复杂度会直接降到<code>O(indices.size())</code>。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">oddCells</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; indices)</span> </span>&#123;</span><br><span class="line">        vector&lt;bool&gt; r(n, false), c(m, false);</span><br><span class="line">        <span class="keyword">int</span> cntr = <span class="number">0</span>, cntc = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> <span class="built_in">pair</span>: indices) &#123;</span><br><span class="line">            <span class="keyword">if</span>(r[<span class="built_in">pair</span>[<span class="number">0</span>]]) &#123;</span><br><span class="line">                r[<span class="built_in">pair</span>[<span class="number">0</span>]] = <span class="literal">false</span>;</span><br><span class="line">                cntr--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                r[<span class="built_in">pair</span>[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line">                cntr++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c[<span class="built_in">pair</span>[<span class="number">1</span>]]) &#123;</span><br><span class="line">                c[<span class="built_in">pair</span>[<span class="number">1</span>]] = <span class="literal">false</span>;</span><br><span class="line">                cntc--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                c[<span class="built_in">pair</span>[<span class="number">1</span>]] = <span class="literal">true</span>;</span><br><span class="line">                cntc++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cntr * (m - cntc) + (n - cntr) * cntc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/09/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,10 +256,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-09 10:56:56 / 修改时间：13:54:01" itemprop="dateCreated datePublished" datetime="2020-09-09T10:56:56+08:00">2020-09-09</time>
+              <time title="创建时间：2020-09-09 10:56:56" itemprop="dateCreated datePublished" datetime="2020-09-09T10:56:56+08:00">2020-09-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 09:40:32" itemprop="dateModified" datetime="2020-09-27T09:40:32+08:00">2020-09-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -208,8 +292,8 @@
 <p>candidates 中的数字可以无限制重复被选取。</p>
 <p>说明：</p>
 <p>所有数字（包括 target）都是正整数。<br>解集不能包含重复的组合。</p>
-<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><p>输入：candidates = [2,3,6,7], target = 7,<br>所求解集为：<br>[<br>  [7],<br>  [2,2,3]<br>]</p>
-<h2 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h2><p>输入：candidates = [2,3,5], target = 8,<br>所求解集为：<br>[<br>  [2,2,2,2],<br>  [2,3,3],<br>  [3,5]<br>]</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h3><p>输入：candidates = [2,3,6,7], target = 7,<br>所求解集为：<br>[<br>  [7],<br>  [2,2,3]<br>]</p>
+<h3 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h3><p>输入：candidates = [2,3,5], target = 8,<br>所求解集为：<br>[<br>  [2,2,2,2],<br>  [2,3,3],<br>  [3,5]<br>]</p>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h2><p>官方题解给的很详细了，最容易想到的方法。代码见官方题解。</p>
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>题目读完，有一种似曾相识的感觉——这不就是大佬们小学六年级就学过的完全背包问题吗？只不过，当初的完全背包求得是答案个数，而这道题要求所有的答案方案。但是我们也可以像当初写完全背包那样直接尝试解决这道题。<br>状态转移是一样的，设当前背包大小为<code>d</code>，背包大小为<code>x</code>时的答案序列为<code>ans[x]</code>，可供选择的物品序列为<code>v[]</code>，若背包足够大（<code>d &gt;= v[i]</code>），则每一个<code>ans[d - v[i]]</code>中的的答案序列只需加上<code>d</code>，就可以构成<code>ans[d]</code>的一个答案序列。代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp[<span class="number">501</span>];             <span class="comment">//记录状态</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it: candidates)             <span class="comment">//初始化</span></span><br><span class="line">            dp[it].push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">1</span>, it));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> x: candidates) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i - x &lt; <span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">auto</span> y: dp[i - x]) &#123;</span><br><span class="line">                    dp[i].push_back(y);</span><br><span class="line">                    dp[i].back().push_back(x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -270,7 +354,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 13:53:58" itemprop="dateModified" datetime="2020-09-09T13:53:58+08:00">2020-09-09</time>
+                <time title="修改时间：2020-09-27 09:40:34" itemprop="dateModified" datetime="2020-09-27T09:40:34+08:00">2020-09-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,7 +379,7 @@
       
           <p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combinations">https://leetcode-cn.com/problems/combinations</a></p>
 <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
-<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]</p>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>很容易想到，我们可以用递归的方式枚举排列。枚举选或不选某个元素，用栈（<code>vector</code>代替）维护，如果栈满（达到<code>k</code>），则将栈加入答案序列。代码也不难写，直接上代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; n)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        tmp.push_back(i);</span><br><span class="line">        <span class="keyword">if</span>(tmp.size() == k)</span><br><span class="line">            ans.push_back(tmp);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            dfs(n, k, i + <span class="number">1</span>);       <span class="comment">//选i</span></span><br><span class="line">        tmp.pop_back();</span><br><span class="line">        dfs(n, k, i + <span class="number">1</span>);           <span class="comment">//不选i</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combine</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dfs(n, k, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>这样就直接AC了。</p>
@@ -387,7 +471,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -400,7 +484,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
