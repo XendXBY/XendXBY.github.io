@@ -155,6 +155,160 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/05/Hyperledger%20Fabric%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%EF%BC%881%EF%BC%89-%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="XendXBY">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XendXBY的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/05/Hyperledger%20Fabric%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%EF%BC%881%EF%BC%89-%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Hyperledger Fabric使用文档（1）-入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-05 19:03:01 / 修改时间：18:59:36" itemprop="dateCreated datePublished" datetime="2020-11-05T19:03:01+08:00">2020-11-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hyperledger-Fabric%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" itemprop="url" rel="index"><span itemprop="name">Hyperledger Fabric使用文档</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原链接地址</p>
+<h1 id="客户端必备组件"><a href="#客户端必备组件" class="headerlink" title="客户端必备组件"></a>客户端必备组件</h1><p>开始之前，您应确认已在要运行Hyperledger Fabric的平台上安装了以下所有必备组件。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>如果尚未安装最新版本的<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git</a>，或者如果您在运行curl命令时遇到问题，请下载它。</p>
+<h2 id="安装cURL"><a href="#安装cURL" class="headerlink" title="安装cURL"></a>安装cURL</h2><p>如果尚未安装<a target="_blank" rel="noopener" href="https://curl.haxx.se/download.html">cURL</a>工具的最新版本，或者从文档中运行curl命令时遇到错误，请下载它。</p>
+<h2 id="Docker和Docker-Compose"><a href="#Docker和Docker-Compose" class="headerlink" title="Docker和Docker Compose"></a>Docker和Docker Compose</h2><p>您将需要在要在Hyperledger Fabric上进行操作或进行开发的平台上安装以下组件：</p>
+<p>MacOSX，*nix或Windows 10：<a target="_blank" rel="noopener" href="https://www.docker.com/get-started">Docker</a><br>需要 Docker 17.06.2-ce或更高版本。<br>Windows的旧版本：<a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/docker-toolbox/">Docker Toolbox</a><br>同样，需要Docker 17.06.2-ce或更高版本。</p>
+<p>您可以在终端提示符下使用以下命令检查已安装的Docker版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --version</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<br>以下内容适用于运行systemd的linux系统。</p>
+</blockquote>
+<p>确保docker daemon正在运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p>可选：如果要在系统启动时启动docker daemon，请使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<p>将您的用户添加到docker组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G docker &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<br>安装适用于Mac或Windows的Docker或Docker Toolbox还将安装Docker Compose。如果已经安装了Docker，则应检查是否已安装Docker Compose 1.14.0或更高版本。如果没有，我们建议您安装较新版本的Docker。</p>
+</blockquote>
+<p>您可以从终端提示符使用以下命令检查已安装的Docker Compose的版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="对于Windows用户"><a href="#对于Windows用户" class="headerlink" title="对于Windows用户"></a>对于Windows用户</h2><p>在Windows 10上，您应该使用本机Docker发行版，并且可以使用Windows PowerShell。但是，要使命令binaries成功执行，您仍然需要使uname命令可用。您可以通过安装Git来实现这一点，但请注意，仅支持64位版本。</p>
+<p>在运行任何命令之前，请运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone</span><br></pre></td></tr></table></figure>
+<p>之后设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br><span class="line">git config --global core.longpaths true</span><br></pre></td></tr></table></figure>
+
+<p>您可以使用以下命令检查这些参数的设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --get core.autocrlf</span><br><span class="line">git config --get core.longpaths</span><br></pre></td></tr></table></figure>
+<p>结果应该分别是false和true。</p>
+<p>Git和Docker Toolbox随附的curl命令较旧。确保您使用的是从<a target="_blank" rel="noopener" href="https://curl.haxx.se/download.html">cURL下载页面</a>下载的较新版本。</p>
+<h1 id="安装样本，二进制文件和Docker映像"><a href="#安装样本，二进制文件和Docker映像" class="headerlink" title="安装样本，二进制文件和Docker映像"></a>安装样本，二进制文件和Docker映像</h1><p>当我们为Hyperledger Fabric二进制文件开发实际的安装程序时，我们提供了一个脚本，该脚本会将示例和二进制文件下载并安装到您的系统中。我们认为您会发现安装的示例应用程序对了解有关Hyperledger Fabric的功能和操作的更多信息很有用。</p>
+<p>确定机器上要放置fabric-samples 存储库的位置，然后在终端窗口中输入该目录。</p>
+<blockquote>
+<p>注意：<br>如果您在Windows上运行，则要使用Docker Quickstart Terminal作为接下来操作的命令行。<br>如果使用Docker Toolbox或macOS，则在安装和运行示例时需要使用/Users下的一个位置（macOS）。<br>如果您使用的是Mac的Docker，您需要使用/Users，/Volumes，/private或/tmp下的一个位置。要使用其他位置，请查阅<a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-mac/">Docker文档</a>进行文件共享。<br>如果您将Docker用于Windows，请查阅<a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/">Docker文档</a>以获取共享驱动器， 并使用共享驱动器下的位置。</p>
+</blockquote>
+<p>准备就绪后，在要安装Fabric Samples和二进制文件的目录中，继续执行命令以下拉二进制文件和映像。</p>
+<blockquote>
+<p>注意：<br>如果要使用最新的生产版本，请省略所有版本标识符。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https:&#x2F;&#x2F;bit.ly&#x2F;2ysbOFE | bash -s</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<br>如果要特定版本，请传递Fabric和Fabric-CA docker映像的版本标识符。下面的命令演示了如何下载最新的生产版本-Fabric v2.2.1 和 Fabric CA v1.4.9</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https:&#x2F;&#x2F;bit.ly&#x2F;2ysbOFE | bash -s -- &lt;fabric_version&gt; &lt;fabric-ca_version&gt;</span><br><span class="line">curl -sSL https:&#x2F;&#x2F;bit.ly&#x2F;2ysbOFE | bash -s -- 2.2.1 1.4.9</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<br>如果在运行上述curl命令时遇到错误，则可能是因为curl版本太旧而无法处理重定向或环境不受支持。<br>请查看“客户端必备组件”，安装最新版本的curl并获得正确环境。或者，您可以替换<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh">未缩短的URL</a></p>
+</blockquote>
+<blockquote>
+<p>注意：<br>对于其他使用方式，您可以使用-h标志来查看Fabric-Samples引导脚本的帮助和可用命令。例如： curl -sSL <a target="_blank" rel="noopener" href="https://bit.ly/2ysbOFE">https://bit.ly/2ysbOFE</a> | bash -s – -h</p>
+</blockquote>
+<p>上面的命令下载并执行一个bash脚本，该脚本将下载并提取设置网络所需的所有特定于平台的二进制文件，并将它们放入上面创建的克隆存储库中。它检索以下特定于平台的二进制文件：</p>
+<pre><code>configtxgen，
+configtxlator，
+cryptogen，
+discover，
+idemixgen
+orderer，
+peer，
+fabric-ca-client，
+fabric-ca-server</code></pre>
+<p>并将它们放在当前工作目录的子目录bin中。</p>
+<p>您可能需要将其添加到PATH环境变量中，以便无需完全限定每个二进制文件的路径就可以选择它们。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&lt;path to download location&gt;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>最后，该脚本会将Hyperledger Fabric Docker映像从 <a target="_blank" rel="noopener" href="https://hub.docker.com/u/hyperledger/">Docker Hub</a>下载到本地Docker注册表中，并将其标记为“latest”。</p>
+<p>该脚本列出了最终安装的Docker映像。</p>
+<p>查看每个映像的名称：这些是最终构成我们的Hyperledger Fabric网络的组件。您还将注意到，您有两个具有相同映像ID的实例-一个实例标记为“ amd64-1.xx”，另一个实例标记为“latest”。在1.2.0之前，要下载的映像由uname -m确定并显示为“ x86_64-1.xx”。</p>
+<blockquote>
+<p>注意：<br>在不同的架构上，x86_64 / amd64将替换为标识您的架构的字符串。</p>
+</blockquote>
+<h1 id="Hyperledger-Fabric智能合约（链码）API"><a href="#Hyperledger-Fabric智能合约（链码）API" class="headerlink" title="Hyperledger Fabric智能合约（链码）API"></a>Hyperledger Fabric智能合约（链码）API</h1><p>Hyperledger Fabric提供了许多API，以支持以各种编程语言开发智能合约（链码）。智能合约API可用于Go，Node.js和Java：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-contract-api-go">Go contract-api</a>。<br><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-chaincode-node">Node.js合约API</a>和<a target="_blank" rel="noopener" href="https://hyperledger.github.io/fabric-chaincode-node/">Node.js合约API文档</a>。<br><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-chaincode-java">Java合约API</a>和<a target="_blank" rel="noopener" href="https://hyperledger.github.io/fabric-chaincode-java/">Java合约API文档</a>。</p>
+<h1 id="Hyperledger-Fabric应用程序SDK"><a href="#Hyperledger-Fabric应用程序SDK" class="headerlink" title="Hyperledger Fabric应用程序SDK"></a>Hyperledger Fabric应用程序SDK</h1><p>Hyperledger Fabric提供了许多SDK，以支持使用各种编程语言开发应用程序。SDK可用于Node.js和Java：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-sdk-node">Node.js SDK</a>和<a target="_blank" rel="noopener" href="https://hyperledger.github.io/fabric-sdk-node/">Node.js SDK文档</a>。<br><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-gateway-java">Java SDK</a>和<a target="_blank" rel="noopener" href="https://hyperledger.github.io/fabric-gateway-java/">Java SDK文档</a>。</p>
+<p>使用SDK开发的前提条件可以在Node.js SDK README和Java SDK README中找到。</p>
+<p>此外，还有两个尚未正式发布的应用程序SDK（针对Python和Go），但仍可供下载和测试：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-sdk-py">Python SDK</a>。<br><a target="_blank" rel="noopener" href="https://github.com/hyperledger/fabric-sdk-go">Go SDK</a>。</p>
+<p>当前，Node.js，Java和Go支持Hyperledger Fabric v1.4中提供的新应用程序编程模型。</p>
+<h1 id="Hyperledger-Fabric-CA"><a href="#Hyperledger-Fabric-CA" class="headerlink" title="Hyperledger Fabric CA"></a>Hyperledger Fabric CA</h1><p>Hyperledger Fabric提供了可选的 <a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/&usg">证书颁发机构服务</a> ，您可以选择使用该服务来生成证书和密钥材料，以配置和管理区块链网络中的身份。但是，可以使用任何可以生成ECDSA证书的CA。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/C%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A107/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -917,92 +1071,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/08/77-%E7%BB%84%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="XendXBY">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XendXBY的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/08/77-%E7%BB%84%E5%90%88/" class="post-title-link" itemprop="url">77.组合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-08 17:26:53" itemprop="dateCreated datePublished" datetime="2020-09-08T17:26:53+08:00">2020-09-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 09:40:34" itemprop="dateModified" datetime="2020-09-27T09:40:34+08:00">2020-09-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8A%9B%E6%89%A3/" itemprop="url" rel="index"><span itemprop="name">力扣</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combinations">https://leetcode-cn.com/problems/combinations</a></p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>很容易想到，我们可以用递归的方式枚举排列。枚举选或不选某个元素，用栈（<code>vector</code>代替）维护，如果栈满（达到<code>k</code>），则将栈加入答案序列。代码也不难写，直接上代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; n)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        tmp.push_back(i);</span><br><span class="line">        <span class="keyword">if</span>(tmp.size() == k)</span><br><span class="line">            ans.push_back(tmp);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            dfs(n, k, i + <span class="number">1</span>);       <span class="comment">//选i</span></span><br><span class="line">        tmp.pop_back();</span><br><span class="line">        dfs(n, k, i + <span class="number">1</span>);           <span class="comment">//不选i</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combine</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dfs(n, k, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这样就直接AC了。</p>
-<h3 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h3><p>有些状态可以很容易被剪掉：如果还需要入栈的元素个数大于还未检索的元素个数，即</p>
-<blockquote>
-<p>$k-tmp.size()\gt n-i+1$</p>
-</blockquote>
-<p>那么这样的状态明显是不会得到目标状态的（其实没有剪掉多少点QAQ）。<br>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; n || k - tmp.size() &gt; n - i + <span class="number">1</span>)  <span class="comment">//这里加了剪枝</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        tmp.push_back(i);</span><br><span class="line">        <span class="keyword">if</span>(tmp.size() == k)</span><br><span class="line">            ans.push_back(tmp);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            dfs(n, k, i + <span class="number">1</span>);       <span class="comment">//选i</span></span><br><span class="line">        tmp.pop_back();</span><br><span class="line">        dfs(n, k, i + <span class="number">1</span>);           <span class="comment">//不选i</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combine</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        dfs(n, k, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1069,20 +1142,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
