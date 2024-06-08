@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>系统优化综述调研报告 | 徐博阳的个人博客</title><meta name="author" content="徐博阳"><meta name="copyright" content="徐博阳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="论文题目：There’s plenty of room at the Top: What will drive computer performance after Moore’s law? 作者：Charles E. Leiserson, Neil C. Thompson, Joel S. Emer 等 期刊：Science 年份：2020  背景由于晶体管的物理结构限制，使得其体积难以再度缩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统优化综述调研报告">
+<meta property="og:url" content="https://www.xendxby.xyz/articles/3e574f739121/index.html">
+<meta property="og:site_name" content="徐博阳的个人博客">
+<meta property="og:description" content="论文题目：There’s plenty of room at the Top: What will drive computer performance after Moore’s law? 作者：Charles E. Leiserson, Neil C. Thompson, Joel S. Emer 等 期刊：Science 年份：2020  背景由于晶体管的物理结构限制，使得其体积难以再度缩">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.xendxby.xyz/img/avatar.png">
+<meta property="article:published_time" content="2024-06-01T06:42:06.000Z">
+<meta property="article:modified_time" content="2024-06-03T12:02:51.766Z">
+<meta property="article:author" content="徐博阳">
+<meta property="article:tag" content="系统优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.xendxby.xyz/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.xendxby.xyz/articles/3e574f739121/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"MSSTOJXBVS","apiKey":"091b6ef907353f34a1d291fdefa4c615","indexName":"blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '系统优化综述调研报告',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-03 20:02:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友联</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="徐博阳的个人博客"><span class="site-name">徐博阳的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友联</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">系统优化综述调研报告</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-06-01T06:42:06.000Z" title="发表于 2024-06-01 14:42:06">2024-06-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E8%B0%83%E7%A0%94/">论文调研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="系统优化综述调研报告"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><ul>
+<li>论文题目：There’s plenty of room at the Top: What will drive computer performance after Moore’s law?</li>
+<li>作者：Charles E. Leiserson, Neil C. Thompson, Joel S. Emer 等</li>
+<li>期刊：Science</li>
+<li>年份：2020</li>
+</ul>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>由于晶体管的物理结构限制，使得其体积难以再度缩小，摩尔定律也随之迎来终结。种种迹象表明，底层的优化空间已经很小，而与之相对的顶层仍有很大的空间。顶层可以分为三层：</p>
+<ul>
+<li>硬件架构：执行计算的可编程数字电路。</li>
+<li>软件：指示数字电路的计算内容的代码。</li>
+<li>算法：组织一个计算的有效的问题解决例程。</li>
+</ul>
+<p>底层优化往往可以使得计算机的各个方面同时得到提升，而顶层优化通常只能改善特定的某个方面，并且其收益会受到<strong>边际效应递减规律</strong>的影响。</p>
+<blockquote>
+<p><strong>边际效应递减规律：</strong>在一定时间内，在其他商品的消费数量保持不变的条件下，随着消费者对某种商品消费量的增加，<br>消费者从该商品连续增加的每一消费单位中所得到的效用增量即边际效用是递减的。</p>
+</blockquote>
+<p>相比于底层，顶层的许多部分是互相依赖的，因此，当一个部分被重组以提高性能时，其他部分常常需要依此进行重新设计，这使得顶层优化具有很高的成本和风险。接下来将从顶层的<strong>软件</strong>、<strong>算法</strong>和<strong>硬件</strong>3个方面阐述可优化的空间，并探讨<strong>大型系统组件</strong>的优势。</p>
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>由于在摩尔时代，软件的开发更多聚焦于开发效率而不是产品质量，导致在软件层面存在严重的效率低下，通常被称为<strong>软件膨胀</strong>。此外，目前的大多数软件并没有很好地利用<strong>芯片的体系结构特性</strong>，如并行处理器和向量计算单元。因此，在后摩尔时代，需要<strong>软件性能工程</strong>对软件进行重组，在如上两个方面进行优化，使得程序具有更高的能效。</p>
+<p>以2个4096 $\times$ 4096矩阵的乘法为例，python代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">4096</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">4096</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> xrange(<span class="number">4096</span>):</span><br><span class="line">            C[i][j] += A[i][k] * B[k][j]</span><br></pre></td></tr></table></figure>
+
+<p>但这样的代码完全没有利用到现代计算机的优势。对上面的工作在不同的条件下进行测试，得到如下结果：</p>
+<table>
+<thead>
+<tr>
+<th>实现方法</th>
+<th>运行时间（s）</th>
+<th>峰值性能占比（%）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python</td>
+<td>25,552.48</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>2,372.68</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>C</td>
+<td>542.67</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td>并行循环</td>
+<td>69.80</td>
+<td>0.24</td>
+</tr>
+<tr>
+<td>并行分治</td>
+<td>3.80</td>
+<td>4.33</td>
+</tr>
+<tr>
+<td>加入向量化</td>
+<td>1.10</td>
+<td>14.96</td>
+</tr>
+<tr>
+<td>加入AVX内联</td>
+<td>0.41</td>
+<td>40.45</td>
+</tr>
+</tbody></table>
+<p>上表的每一步操作都对原始的Python代码进行了改良。其中，峰值性能占比是运行代码时的GFLOPS相对计算机的峰值GFLOPS的比例，反映了对应策略对计算机性能的利用率。</p>
+<p>从上表可以看到，除了编程语言的选择可以使得代码具有更高的性能，对硬件特性的充分利用同样大幅度加快了程序的运行。因此，<strong>更加底层的语言</strong>的性能工程中可以获得更大的潜在收益。</p>
+<p>而对于软件膨胀，一方面是由于<strong>程序代码本身的效能低下</strong>，另一方面是<strong>没有根据底层架构定制代码</strong>。此外，软件膨胀还可能来自于<strong>开发策略的选择</strong>。</p>
+<p>比如<strong>缩用（reduction）</strong>的策略，简单来说就是将一个泛用于一类问题的程序或代码直接用于解决某一个小型的子问题。最大的问题是这样的策略可能会链式进行，这样会使整体效率受到各部分冗余<strong>乘算</strong>规模的影响。然而，相对于缩用的策略，专门针对特定问题进行软件开发，将会极大增加开发成本和风险。事实上，更高效的代码往往会更加复杂。</p>
+<p>抽象地说，软件性能工程可以看作是一个涉及单个循环的简单过程：</p>
+<ol>
+<li>测试程序A的性能。</li>
+<li>对程序A进行修改，以产生一个期望更优的程序A’。</li>
+<li>测试程序A’的性能。</li>
+<li>如果A’优于A，则设置A&#x3D;A’。</li>
+<li>如果A仍然不够快，返回2。</li>
+</ol>
+<p>但是如今的软件系统通常非常复杂，测量需要重复多次，以确保程序的一个版本优于另一个版本。</p>
+<p>随着硬件变得越来越专业化和异构化，编写高性能的代码将变得越来越困难，但这对于软件的性能提升是十分必要的。</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>算法的改进可以使得软件性能获得大幅提升，有时甚至远远超过了处理器速度提高带来的性能提升。但是算法设计依赖于人类的创新性，因此很难预测其发展趋势。</p>
+<p>以网络最大流算法的发展为例，虽然在过去20年内并没有更优的算法改善这个问题，但在之前的38年里，最佳算法的性能收益与摩尔定律带来的硬件性能收益几乎持平。综上，我们可以得到如下几个结论：</p>
+<ul>
+<li>特定的算法问题的发展是不均衡和不连续的</li>
+<li>算法革新的收益与摩尔定律的收益相当</li>
+<li>任何问题的算法优化空间都是有上限的</li>
+</ul>
+<p>然而，由于这个例子关注的是一个众所周知的问题，所以它忽略了算法在性能工程中加快计算速度的另一个关键方面：<strong>为新问题提供高效的解决方案</strong>。</p>
+<p>因此，尽管对旧问题的研究仍可能会产生边际收益，但算法的大部分进展将来自三个方面：</p>
+<ul>
+<li><p><strong>进军新的问题领域：</strong>诸如机器学习、社交网络、游戏理论、视频编码等领域在近些年可能刚刚出现或正在进入发展阶段，新出现的领域正在不断产生对新算法的需求。许多公司因为优秀的算法在市场上取得了竞争优势，许多科学研究的成功也离不开算法的设计。</p>
+</li>
+<li><p><strong>解决可伸缩性问题：</strong>如果要从海量数据（如兆兆级）储存中，找到这些数据的中位数，如果使用传统的读写方式，将会造成大量的读写和计算开销。然而，如果采用取样的方式（如抽取百万级的样本）计算其中位数，这样的计算结果具有很好的代表性，同时大幅减小了问题的复杂度。</p>
+</li>
+<li><p><strong>定制算法以利用现代硬件：</strong>定制一个算法来利用现代硬件可以使其速度更快。目前的大多数算法设计都使用的是<strong>串行随机访问机器模型</strong>，它假设处理器一次只能做一个操作，并且访问内存的任何部分的成本是相同的。<strong>这种算法使用现代硬件往往效率低下</strong>，因为它们没有充分利用机器的许多并行处理核心和向量单元，每个时钟周期可以执行许多操作，而且它们不能利用缓存，缓存可以将数据访问速度提高两个数量级。</p>
+</li>
+</ul>
+<p>尽管算法研究已经为现代计算机的显著特征开发了数学模型，如并行和向量处理和缓存层次结构，但算法和实现之间仍然存在较大的差距。问题在于，每个数学模型只倾向于解决某一个方面，然而，为现代计算机定制算法需要理解所有模型。此外，为了尽可能提高性能，一些可能导致可变性和不可预测性的硬件特性（如同步多线程、动态电压和频率缩放、直接映射缓存和各种有特殊用途的指令）实际上更难定制算法硬件。</p>
+<p>一种可能的解决方案是<strong>自动调优（autotune）</strong>，该方法搜索可能实现的参数化空间，以找到最快的实现，并可以通过机器学习方法实现更优的效果。但这样的方法会导致巨大的前期成本，并且使得优化后的程序变得难以理解，不利于算法设计者和硬件架构师的深度协作。</p>
+<h1 id="硬件架构"><a href="#硬件架构" class="headerlink" title="硬件架构"></a>硬件架构</h1><p>在后摩尔时代，硬件架构师将需要采取与之前相反的策略，致力于硬件的流线型化：使用更少的晶体管和更少的硅面积来实现硬件功能，使得具有充分并行性的应用程序将获得最大的好处。</p>
+<p>事实表明，微处理器的时钟频率在经过了若干年的增长之后，如今已趋于稳定，而其并行性能相较于串行性能的提升速度明显更快。</p>
+<p>除了并行性之外，局部性也是硬件架构优化的重点。</p>
+<blockquote>
+<p><strong>程序的局部性原理：</strong>是指程序在执行时呈现出局部性规律，即在一段时间内，整个程序的执行仅限于程序中的某一部分。相应地，执行所访问的存储空间也局限于某个内存区域。<br>局部性原理又表现为：时间局部性和空间局部性。<br>时间局部性是指如果程序中的某条指令一旦执行，则不久之后该指令可能再次被执行；如果某数据被访问，则不久之后该数据可能再次被访问。<br>空间局部性是指一旦程序访问了某个存储单元，则不久之后，其附近的存储单元也将被访问。<br>因此，从存储设备读取的数据应在短时内重复使用，而不是重复读写。</p>
+</blockquote>
+<p>对于局部性较小的应用程序，并行性提高会导致芯片外内存的流量成倍增加并且最终超过其通道到内存的带宽，致使应用程序被内存读写阻塞。然而，对于具有良好局部性的应用程序，随着并行性的增加，芯片外内存流量的增长得要慢得多，这使得所有芯片的计算引擎能够在不空转的情况下完成工作。多数应用程序域都包含了大量的局部性和并行性。</p>
+<p>硬件简化可以通过其他方式利用本地性。如果应用程序拥有良好的局部性，芯片内部的互连可以变得更简单，消耗更少的功率和面积。</p>
+<p>使得处理器提高并行能力的策略包括：<strong>处理器简化（Processor Simplification）</strong>和<strong>领域专门化（Domain Specialization）</strong>。</p>
+<ul>
+<li><strong>处理器简化：</strong>使用含有更少晶体管的核心，并使用分支预测执行（Speculative Execution）等硬件技术进行优化。在相同面积的芯片上，简化程度越高的芯片就可以使用越多的核心数，前提是应用程序拥有足够的并行性，使得多余的核保持繁忙。</li>
+<li><strong>领域专门化：</strong>为应用程序领域定制的硬件可以更加精简，使用更少的晶体管，使应用程序的运行速度可以快数十到数百倍。如GPU就是针对图形处理专门定制的芯片，尽其时钟周期往往比起CPU更慢，但由于其拥有更强的并行化能力，它的图形处理能力会更加强大。一些为专门的领域定制的设备也在其他领域有用处，如GPU也被广泛应用到了线性代数、深度学习等领域。在后摩尔时代，我们期望拥有更多专门针对不同应用领域的各种硬件设备。</li>
+</ul>
+<h1 id="大型系统组件"><a href="#大型系统组件" class="headerlink" title="大型系统组件"></a>大型系统组件</h1><p>在后摩尔时代，性能工程、算法的开发和硬件流线化在大型系统组件中将是最有效的。</p>
+<blockquote>
+<p><strong>大型系统组件：</strong>指可重用的大型软件（通常有超过100万行代码，如Web浏览器、数据库系统、操作系统、GPU编译器、磁盘存储系统等），或复杂性相当的硬件（如微处理器等），或类似的大型软硬件联合组件。</p>
+</blockquote>
+<p>将代码分解成模块，并将实现隐藏在接口后面，从而使开发速度更快，软件也更健壮，并且各个模块之间互不交叉，使得其开发可以并行进行。同样的，硬件模块可以各自进行内部重构而不影响应用程序编程接口（Application Programming<br>Interfaces，APIs）。</p>
+<p>约靠近底层、对系统影响越大的模块，对整体性能的提升越大。但影响许多模块的大规模重构有较高的风险和成本。如对于微处理器，制造商通常在不更改指令集体系结构（Instruction Set Architecture，ISA）的情况下，通过内部重构来提高性能，以便旧软件继续正常运行。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在后摩尔时代，软件的性能工程、算法的开发和硬件的简化可以继续提高计算机应用程序的运行速度。然而，与底部优化的收益不同，顶部的收益将是随机的、不均匀的、零星的，而且存在边际效应。其中，大型系统组件可以在顶部的性能提升中获得最佳收益，并最大限度地减少外部影响。尽管许多新兴的技术（如超导计算、3D堆叠等）在底层优化具有长久投资价值，但在短期内，大多数应用程序更有希望在底层获得性能提升。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/">系统优化</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">软件系统优化学习笔记（一）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-04</div><div class="title">软件系统优化学习笔记（一）</div></div></a></div><div><a href="/articles/2e2d4187c73c/" title="软件系统优化实验A1笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-08</div><div class="title">软件系统优化实验A1笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">软件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">硬件架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">大型系统组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 徐博阳</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.22.1/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.65.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js?v=4.13.0"></script></div></div></body></html>
