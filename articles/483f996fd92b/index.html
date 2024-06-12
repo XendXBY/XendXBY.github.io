@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件系统优化学习笔记（二） | 徐博阳的个人博客</title><meta name="author" content="徐博阳"><meta name="copyright" content="徐博阳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="性能测量测量方法外部测量利用外部工具对程序进行测量，通常不需要修改程序。  time ( &#x2F;usr&#x2F;bin&#x2F;time ) Linux perf Intel EMON …  程序运行时间分为：  真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间 CPU时间（CPU time） ：指程序占用CPU进行运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件系统优化学习笔记（二）">
+<meta property="og:url" content="https://www.xendxby.xyz/articles/483f996fd92b/index.html">
+<meta property="og:site_name" content="徐博阳的个人博客">
+<meta property="og:description" content="性能测量测量方法外部测量利用外部工具对程序进行测量，通常不需要修改程序。  time ( &#x2F;usr&#x2F;bin&#x2F;time ) Linux perf Intel EMON …  程序运行时间分为：  真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间 CPU时间（CPU time） ：指程序占用CPU进行运算">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.xendxby.xyz/img/avatar.png">
+<meta property="article:published_time" content="2024-06-10T02:35:26.000Z">
+<meta property="article:modified_time" content="2024-06-12T02:33:09.604Z">
+<meta property="article:author" content="徐博阳">
+<meta property="article:tag" content="系统优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.xendxby.xyz/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.xendxby.xyz/articles/483f996fd92b/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"MSSTOJXBVS","apiKey":"091b6ef907353f34a1d291fdefa4c615","indexName":"blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件系统优化学习笔记（二）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-12 10:33:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友联</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="徐博阳的个人博客"><span class="site-name">徐博阳的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友联</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">软件系统优化学习笔记（二）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-06-10T02:35:26.000Z" title="发表于 2024-06-10 10:35:26">2024-06-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="软件系统优化学习笔记（二）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="性能测量"><a href="#性能测量" class="headerlink" title="性能测量"></a>性能测量</h1><h2 id="测量方法"><a href="#测量方法" class="headerlink" title="测量方法"></a>测量方法</h2><h3 id="外部测量"><a href="#外部测量" class="headerlink" title="外部测量"></a>外部测量</h3><p>利用外部工具对程序进行测量，通常<strong>不需要修改程序</strong>。</p>
+<ul>
+<li>time ( &#x2F;usr&#x2F;bin&#x2F;time )</li>
+<li>Linux perf</li>
+<li>Intel EMON</li>
+<li>…</li>
+</ul>
+<p>程序运行时间分为：</p>
+<ul>
+<li>真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间</li>
+<li>CPU时间（CPU time） ：指程序占用CPU进行运算的时间。根据CPU的状态，还以细分为：<ul>
+<li>用户态时间</li>
+<li>内核态时间</li>
+</ul>
+</li>
+</ul>
+<p><strong>在多核下运行的并行程序中，CPU时间为多个线程的CPU时间之和，该时间一般小于真实时间。</strong></p>
+<h3 id="内部（插桩）测量"><a href="#内部（插桩）测量" class="headerlink" title="内部（插桩）测量"></a>内部（插桩）测量</h3><p>内部测量（internal measurement） ，或叫插桩（instrumentation） ，是通过修改程序的源代码或二进制文件，在程序中插入时间测量代码或性能分析工具来测量程序的性能。</p>
+<p>适用范围：只对程序某一部分的性能感兴趣，而非整个程序。</p>
+<p>间隔计时器：在需测量程序代码段的开始和结尾各插入一个计时器（插桩点， instrumentation point），用两次计时的间隔来表示所测量程序的运行时间。</p>
+<ul>
+<li>clock_gettime(CLOCK_MONOTONIC, …)</li>
+<li>gettimeofday()</li>
+<li>rdtsc()</li>
+<li>推荐使用clock_gettime(CLOCK_MONOTONIC, …)<ul>
+<li>时钟类型 CLOCK_MONOTONIC 表示该时钟是从系统启动开始计时，计数值单调不变（不会回退）</li>
+<li>能获得 ns 级别的时间戳</li>
+</ul>
+</li>
+<li>不推荐使用 ② gettimeofday() 或 ③ rdtsc<ul>
+<li>gettimeofday() 使用的时钟类型是 CLOCK_REALTIME，会随着时区改变而改变，并且用户可以手动修改</li>
+<li>gettimeofday() 只能获得 μs 级别的时间戳</li>
+<li>TSC 计数器的值在处理器不同核心上计数值是不同的</li>
+<li>TSC 计数差值到真实时间的换算有时并不容易</li>
+<li>TSC 是硬件计数器，可能会溢出</li>
+</ul>
+</li>
+</ul>
+<h3 id="仿真测量"><a href="#仿真测量" class="headerlink" title="仿真测量"></a>仿真测量</h3><p>仿真测量（simulation measurement） 是使用计算机模型或仿真工具来模拟程序、系统或硬件在不同条件下的行为，以评估其性能和稳定性等行为。</p>
+<p>Valgrind：用于软件内存泄漏检测、性能分析的一套工具</p>
+<ul>
+<li>本质：使用即时编译（Just-In-Time， JIT）技术的虚拟机</li>
+</ul>
+<h2 id="数据收集策略"><a href="#数据收集策略" class="headerlink" title="数据收集策略"></a>数据收集策略</h2><h3 id="计数型"><a href="#计数型" class="headerlink" title="计数型"></a>计数型</h3><p>计数（counting）型策略是用计数器（counter）对特定事件发生的绝对次数进行收集。</p>
+<ul>
+<li>软件计数器：操作系统内核或用户进程在内存中维护的变量。</li>
+<li>硬件计数器： 计算机硬件内真实存在的寄存器。</li>
+</ul>
+<h3 id="采样型"><a href="#采样型" class="headerlink" title="采样型"></a>采样型</h3><p>采样（sampling）型策略是在程序运行过程中，对系统有规律地进行采样，采样时刻将收集系统的状态信息形成若干样本，最终形成性能数据的统计信息。</p>
+<ul>
+<li>特点：开销可控。</li>
+</ul>
+<h3 id="追踪型"><a href="#追踪型" class="headerlink" title="追踪型"></a>追踪型</h3><p>追踪（tracing）型策略记录了程序的执行过程中的每个事件和函数调用，提供了详细的时间序列信息。</p>
+<ul>
+<li>事件驱动，需要记录特定事件发生的时间以及其他用户关心的状态信息（计数型仅需要更新计数器）。</li>
+<li>如果事件发生较为频繁，追踪将造成显著开销。</li>
+</ul>
+<h2 id="性能可变性"><a href="#性能可变性" class="headerlink" title="性能可变性"></a>性能可变性</h2><p>在性能测量中，可变性具体表现在多次性能测量的结果存在波动。</p>
+<p>性能可变性的来源：</p>
+<ul>
+<li>软件层面：<ul>
+<li>后台任务</li>
+<li>中断</li>
+<li>进程&#x2F;线程运行时调度</li>
+<li>CPU或内存绑定</li>
+<li>多租户（multitenancy）</li>
+<li>代码或数据对齐 等</li>
+</ul>
+</li>
+<li>硬件层面：<ul>
+<li>超线程（HyperThreading， HT）</li>
+<li>动态电压和频率调节（Dynamic Voltage and Frequency Scaling, DVFS）</li>
+<li>睿频（Turbo Boost）</li>
+<li>网络流量 等</li>
+</ul>
+</li>
+</ul>
+<p>控制可变性的方法——系统静默（quiescing）：</p>
+<ul>
+<li>软件层面：<ul>
+<li>关闭后台任务</li>
+<li>绑定工作进程&#x2F;线程（taskset或numactl）等</li>
+</ul>
+</li>
+<li>硬件层面：<ul>
+<li>关闭HT &#x2F; DVFS &#x2F; Turbo Boost 等</li>
+</ul>
+</li>
+</ul>
+<h1 id="配置优化"><a href="#配置优化" class="headerlink" title="配置优化"></a>配置优化</h1><p>即配置软件使其在特定的使用场景（如不同平台、不同架构等）获得更优的性能。</p>
+<h2 id="特征建模"><a href="#特征建模" class="headerlink" title="特征建模"></a>特征建模</h2><ul>
+<li>一种模型驱动的方法</li>
+<li>具有形式化的表示方法</li>
+<li>支持使用现成的约束求解器进行自动分析</li>
+</ul>
+<p>通过特征建模和约束求解，便可以得到特定目标的特征依赖，从而得到软件的优化策略。</p>
+<h2 id="组合爆炸"><a href="#组合爆炸" class="headerlink" title="组合爆炸"></a>组合爆炸</h2><p>在特征数量较多的时候，通过组合选取特征的方法穷举特征选择，具有很高的难度。</p>
+<h2 id="特征交互"><a href="#特征交互" class="headerlink" title="特征交互"></a>特征交互</h2><p>不同的特征之间可能存在交互，即加入一个特征会影响到另一个特征的优化效果或性能。</p>
+<h2 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h2><ul>
+<li>简单测试：不考虑特征交互，对每一个模块进行分别测试</li>
+<li>全阶乘测试：考虑所有特征交互，穷举每个特征启用&#x2F;禁用的情况，复杂度达到$2^k$</li>
+<li>部分阶乘测试：选取全阶乘中的部分情况进行测试，比全阶乘的耗时更少，但无法穷举所有选择情况</li>
+<li>机器学习方法：如CART（Classification And Regression Trees）、随机森林、贝叶斯优化等</li>
+<li>自动调优：OpenTuner等</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/">系统优化</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/articles/2e2d4187c73c/" title="软件系统优化实验A1笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软件系统优化实验A1笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/articles/3e574f739121/" title="系统优化综述调研报告"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">系统优化综述调研报告</div></div></a></div><div><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-04</div><div class="title">软件系统优化学习笔记（一）</div></div></a></div><div><a href="/articles/2e2d4187c73c/" title="软件系统优化实验A1笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-08</div><div class="title">软件系统优化实验A1笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">性能测量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E9%87%8F%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">测量方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%B5%8B%E9%87%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">外部测量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8%EF%BC%88%E6%8F%92%E6%A1%A9%EF%BC%89%E6%B5%8B%E9%87%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">内部（插桩）测量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F%E6%B5%8B%E9%87%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">仿真测量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.</span> <span class="toc-text">数据收集策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">计数型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%87%E6%A0%B7%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">采样型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%BD%E8%B8%AA%E5%9E%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">追踪型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">性能可变性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">配置优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%BB%BA%E6%A8%A1"><span class="toc-number">2.1.</span> <span class="toc-text">特征建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E7%88%86%E7%82%B8"><span class="toc-number">2.2.</span> <span class="toc-text">组合爆炸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E4%BA%A4%E4%BA%92"><span class="toc-number">2.3.</span> <span class="toc-text">特征交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">测试类型</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 徐博阳</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.22.1/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.65.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js?v=4.13.0"></script></div></div></body></html>
