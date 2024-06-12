@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件系统优化学习笔记（二） | 徐博阳的个人博客</title><meta name="author" content="徐博阳"><meta name="copyright" content="徐博阳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="性能测量测量方法外部测量利用外部工具对程序进行测量，通常不需要修改程序。  time ( &#x2F;usr&#x2F;bin&#x2F;time ) Linux perf Intel EMON …  程序运行时间分为：  真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间 CPU时间（CPU time） ：指程序占用CPU进行运算">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件系统优化学习笔记（二） | 徐博阳的个人博客</title><meta name="author" content="徐博阳"><meta name="copyright" content="徐博阳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="性能测量测量方法外部测量利用外部工具对程序进行测量，通常不需要修改程序。  time ( &#x2F;usr&#x2F;bin&#x2F;time ) Linux perf Intel EMON …  程序运行时间分为：  真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间 CPU时间（CPU time） ：指程序占用CPU进行运算的时间。根据CPU的状态，还以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软件系统优化学习笔记（二）">
 <meta property="og:url" content="https://www.xendxby.xyz/articles/483f996fd92b/index.html">
 <meta property="og:site_name" content="徐博阳的个人博客">
-<meta property="og:description" content="性能测量测量方法外部测量利用外部工具对程序进行测量，通常不需要修改程序。  time ( &#x2F;usr&#x2F;bin&#x2F;time ) Linux perf Intel EMON …  程序运行时间分为：  真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间 CPU时间（CPU time） ：指程序占用CPU进行运算">
+<meta property="og:description" content="性能测量测量方法外部测量利用外部工具对程序进行测量，通常不需要修改程序。  time ( &#x2F;usr&#x2F;bin&#x2F;time ) Linux perf Intel EMON …  程序运行时间分为：  真实时间（real time） ：也称挂钟时间（wall clock time），指程序开始到结束真实世界经过的时间 CPU时间（CPU time） ：指程序占用CPU进行运算的时间。根据CPU的状态，还以">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.xendxby.xyz/img/avatar.png">
 <meta property="article:published_time" content="2024-06-10T02:35:26.000Z">
-<meta property="article:modified_time" content="2024-06-12T02:33:09.604Z">
+<meta property="article:modified_time" content="2024-06-12T03:22:00.734Z">
 <meta property="article:author" content="徐博阳">
 <meta property="article:tag" content="系统优化">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-06-12 10:33:09'
+  postUpdate: '2024-06-12 11:22:00'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -155,7 +155,7 @@
       detectApple()
     })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友联</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="徐博阳的个人博客"><span class="site-name">徐博阳的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友联</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">软件系统优化学习笔记（二）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-06-10T02:35:26.000Z" title="发表于 2024-06-10 10:35:26">2024-06-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="软件系统优化学习笔记（二）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="性能测量"><a href="#性能测量" class="headerlink" title="性能测量"></a>性能测量</h1><h2 id="测量方法"><a href="#测量方法" class="headerlink" title="测量方法"></a>测量方法</h2><h3 id="外部测量"><a href="#外部测量" class="headerlink" title="外部测量"></a>外部测量</h3><p>利用外部工具对程序进行测量，通常<strong>不需要修改程序</strong>。</p>
 <ul>
-<li>time ( &#x2F;usr&#x2F;bin&#x2F;time )</li>
+<li>time ( /usr/bin/time )</li>
 <li>Linux perf</li>
 <li>Intel EMON</li>
 <li>…</li>
@@ -216,7 +216,7 @@
 <li>软件层面：<ul>
 <li>后台任务</li>
 <li>中断</li>
-<li>进程&#x2F;线程运行时调度</li>
+<li>进程/线程运行时调度</li>
 <li>CPU或内存绑定</li>
 <li>多租户（multitenancy）</li>
 <li>代码或数据对齐 等</li>
@@ -234,11 +234,11 @@
 <ul>
 <li>软件层面：<ul>
 <li>关闭后台任务</li>
-<li>绑定工作进程&#x2F;线程（taskset或numactl）等</li>
+<li>绑定工作进程/线程（taskset或numactl）等</li>
 </ul>
 </li>
 <li>硬件层面：<ul>
-<li>关闭HT &#x2F; DVFS &#x2F; Turbo Boost 等</li>
+<li>关闭HT / DVFS / Turbo Boost 等</li>
 </ul>
 </li>
 </ul>
@@ -253,7 +253,7 @@
 <h2 id="特征交互"><a href="#特征交互" class="headerlink" title="特征交互"></a>特征交互</h2><p>不同的特征之间可能存在交互，即加入一个特征会影响到另一个特征的优化效果或性能。</p>
 <h2 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h2><ul>
 <li>简单测试：不考虑特征交互，对每一个模块进行分别测试</li>
-<li>全阶乘测试：考虑所有特征交互，穷举每个特征启用&#x2F;禁用的情况，复杂度达到$2^k$</li>
+<li>全阶乘测试：考虑所有特征交互，穷举每个特征启用/禁用的情况，复杂度达到$2^k$</li>
 <li>部分阶乘测试：选取全阶乘中的部分情况进行测试，比全阶乘的耗时更少，但无法穷举所有选择情况</li>
 <li>机器学习方法：如CART（Classification And Regression Trees）、随机森林、贝叶斯优化等</li>
 <li>自动调优：OpenTuner等</li>

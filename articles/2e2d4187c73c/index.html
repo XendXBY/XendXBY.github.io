@@ -177,7 +177,7 @@
 </li>
 </ul>
 <h2 id="常用工具命令操作联系"><a href="#常用工具命令操作联系" class="headerlink" title="常用工具命令操作联系"></a>常用工具命令操作联系</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a</span><br><span class="line"><span class="comment"># Linux ubuntu 5.15.0-112-generic #122-Ubuntu SMP Thu May 23 07:48:21 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -191,7 +191,8 @@
 <th>操作系统名称</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Linux</td>
 <td>ubuntu</td>
 <td>5.15.0-112-generic</td>
@@ -199,21 +200,22 @@
 <td>x86_64</td>
 <td>x86_64</td>
 <td>x86_64</td>
-<td>GNU&#x2F;Linux</td>
+<td>GNU/Linux</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -a</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>功能：列出系统内核的所有参数</li>
-<li>与&#x2F;proc&#x2F;sys的关系：该文件夹下有多个子文件夹，每个子文件夹下以文件的形式存放有若干参数。该命令遍历&#x2F;proc&#x2F;sys文件夹，将其中的信息以“子文件夹.子项目名称”的形式逐条输出。</li>
+<li>与/proc/sys的关系：该文件夹下有多个子文件夹，每个子文件夹下以文件的形式存放有若干参数。该命令遍历/proc/sys文件夹，将其中的信息以“子文件夹.子项目名称”的形式逐条输出。</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>该命令进入交互式界面，按q退出。</li>
 <li>该命令用于实时显示进程的动态。</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -231,7 +233,8 @@
 <th>COMMAND</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>进程ID</td>
 <td>进程所有者的用户名</td>
 <td>优先级</td>
@@ -242,23 +245,24 @@
 <td>进程状态</td>
 <td>进程上次更新到现在的CPU时间占用百分比</td>
 <td>物理内存占比</td>
-<td>进程使用的CPU时间总计（单位1&#x2F;100秒）</td>
+<td>进程使用的CPU时间总计（单位1/100秒）</td>
 <td>命令名</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmidecode</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li>用于在Linux下获取硬件信息，遵循SMBIOS&#x2F;DMI标准，可获取包括BIOS、系统、主板、处理器、内存、缓存等等硬件信息。</li>
-<li>以内存为例，能获取到如下信息：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Handle 0x0222, DMI type 17, 34 bytes</span><br><span class="line">Memory Device</span><br><span class="line">	Array Handle: 0x0025</span><br><span class="line">	Error Information Handle: No Error</span><br><span class="line">	Total Width: 32 bits</span><br><span class="line">	Data Width: 32 bits</span><br><span class="line">	Size: No Module Installed</span><br><span class="line">	Form Factor: DIMM</span><br><span class="line">	Set: None</span><br><span class="line">	Locator: NVD #63</span><br><span class="line">	Bank Locator: NVD #63</span><br><span class="line">	Type: Other</span><br><span class="line">	Type Detail: Unknown</span><br><span class="line">	Speed: Unknown</span><br><span class="line">	Manufacturer: Not Specified</span><br><span class="line">	Serial Number: Not Specified</span><br><span class="line">	Asset Tag: Not Specified</span><br><span class="line">	Part Number: Not Specified</span><br><span class="line">	Rank: Unknown</span><br><span class="line">	Configured Memory Speed: Unknown</span><br></pre></td></tr></table></figure></li>
+<li>用于在Linux下获取硬件信息，遵循SMBIOS/DMI标准，可获取包括BIOS、系统、主板、处理器、内存、缓存等等硬件信息。</li>
+<li>以内存为例，能获取到如下信息：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Handle 0x0222, DMI type 17, 34 bytes</span><br><span class="line">Memory Device</span><br><span class="line">	Array Handle: 0x0025</span><br><span class="line">	Error Information Handle: No Error</span><br><span class="line">	Total Width: 32 bits</span><br><span class="line">	Data Width: 32 bits</span><br><span class="line">	Size: No Module Installed</span><br><span class="line">	Form Factor: DIMM</span><br><span class="line">	Set: None</span><br><span class="line">	Locator: NVD #63</span><br><span class="line">	Bank Locator: NVD #63</span><br><span class="line">	Type: Other</span><br><span class="line">	Type Detail: Unknown</span><br><span class="line">	Speed: Unknown</span><br><span class="line">	Manufacturer: Not Specified</span><br><span class="line">	Serial Number: Not Specified</span><br><span class="line">	Asset Tag: Not Specified</span><br><span class="line">	Part Number: Not Specified</span><br><span class="line">	Rank: Unknown</span><br><span class="line">	Configured Memory Speed: Unknown</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">numactl -H</span><br><span class="line"><span class="comment"># available: 1 nodes (0)</span></span><br><span class="line"><span class="comment"># node 0 cpus: 0 1 2 3</span></span><br><span class="line"><span class="comment"># node 0 size: 3875 MB</span></span><br><span class="line"><span class="comment"># node 0 free: 1045 MB</span></span><br><span class="line"><span class="comment"># node distances:</span></span><br><span class="line"><span class="comment"># node   0 </span></span><br><span class="line"><span class="comment">#   0:  10</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>NUMA（Non-Uniform Memory Access，非一致性内存访问）是一种用于多处理器计算机系统的内存架构。与传统的一致性内存访问（Uniform Memory Access, UMA）不同，NUMA架构中的处理器访问内存的速度取决于内存的物理位置。<br>在NUMA系统中，整个系统的内存被划分为若干个区域，每个区域（通常称为“节点”）都由一个或多个处理器和相应的本地内存组成。处理器访问其本地内存的速度较快，而访问其他节点的内存则较慢。因此，内存访问时间在不同的节点之间是不一致的。<br>NUMA的主要特点和优势包括：<br>提高可扩展性：通过将内存和处理器分布在多个节点上，可以更容易地扩展系统的处理能力和内存容量。<br>降低内存访问延迟：处理器可以更快地访问其本地内存，从而提高系统的性能。<br>资源共享：多个处理器可以共享整个系统的内存资源，提高了资源利用率。<br>然而，NUMA架构也带来了编程上的挑战。开发者需要优化程序，以尽量使处理器访问本地内存，从而减少跨节点访问带来的性能开销。</p>
 </blockquote>
 <ul>
-<li>显示当前系统的 NUMA 拓扑结构。-H 参数（全写为 –hardware）用于打印出系统的 NUMA 硬件配置，包括节点的数量、每个节点的内存大小、节点之间的距离矩阵以及每个节点上的 CPU 列表。<ul>
+<li>显示当前系统的 NUMA 拓扑结构。-H 参数（全写为 —hardware）用于打印出系统的 NUMA 硬件配置，包括节点的数量、每个节点的内存大小、节点之间的距离矩阵以及每个节点上的 CPU 列表。<ul>
 <li>available: NUMA 节点的数量。</li>
 <li>node 0 cpus: 节点 0 所使用的cpu。</li>
 <li>node 0 size: 节点 0 的内存大小。</li>
@@ -268,7 +272,6 @@
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>lscpu 是一个简洁的命令行工具，用于显示 CPU 架构的信息。它汇总了关于系统 CPU 的各种信息，输出更加人性化和结构化。其内容包括但不限于：</p>
 <ul>
@@ -281,32 +284,25 @@
 <li>插槽数（Socket(s)）: 显示系统中的物理 CPU 插槽数量。</li>
 <li>NUMA 节点数（NUMA node(s)）: 显示系统中的 NUMA 节点数量。</li>
 <li>CPU 最大频率（CPU max MHz）: 显示 CPU 的最大频率。</li>
-<li>L1d&#x2F;L1i&#x2F;L2&#x2F;L3 缓存大小（L1d&#x2F;L1i&#x2F;L2&#x2F;L3 cache）: 显示不同级别缓存的大小。</li>
+<li>L1d/L1i/L2/L3 缓存大小（L1d/L1i/L2/L3 cache）: 显示不同级别缓存的大小。</li>
 </ul>
 </li>
-<li><p>cat &#x2F;proc&#x2F;cpuinfo 直接从内核的 &#x2F;proc 文件系统中读取信息，输出的信息较为详细和冗长。</p>
+<li><p>cat /proc/cpuinfo 直接从内核的 /proc 文件系统中读取信息，输出的信息较为详细和冗长。</p>
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>用于显示系统的内存使用情况，包括物理内存、交换空间和缓冲区缓存的使用情况。</p>
 </li>
 <li><p>total：总的内存量（包括物理内存和交换空间）。</p>
 </li>
-<li><p>used：已经使用的内存量。</p>
-</li>
-<li><p>free：空闲的内存量。</p>
-</li>
-<li><p>shared：共享内存量，主要用于 tmpfs（临时文件系统）。</p>
-</li>
-<li><p>buff&#x2F;cache：缓冲区和缓存的内存量。</p>
-</li>
-<li><p>available：可用的内存量，这个值是基于当前内存使用情况计算出的一个估计值，表示新的应用程序可以使用的内存量。</p>
-</li>
+<li>used：已经使用的内存量。</li>
+<li>free：空闲的内存量。</li>
+<li>shared：共享内存量，主要用于 tmpfs（临时文件系统）。</li>
+<li>buff/cache：缓冲区和缓存的内存量。</li>
+<li>available：可用的内存量，这个值是基于当前内存使用情况计算出的一个估计值，表示新的应用程序可以使用的内存量。</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vmstat 1</span><br><span class="line">mpstat -P ALL 1</span><br><span class="line">pidstat 1</span><br><span class="line">iostat -xz 1</span><br></pre></td></tr></table></figure>
-
 <p>这些命令用于监控和分析系统性能，每条命令监控不同的系统资源。参数 1 表示每隔 1 秒刷新一次信息。</p>
 <ul>
 <li><p>vmstat 命令显示虚拟内存统计信息，包括内存、分页、CPU 活动等。</p>
@@ -324,11 +320,11 @@
 </ul>
 </li>
 <li>swap：交换空间信息<ul>
-<li>si：从交换区调入内存的量（KB&#x2F;s）</li>
-<li>so：从内存调出到交换区的量（KB&#x2F;s）</li>
+<li>si：从交换区调入内存的量（KB/s）</li>
+<li>so：从内存调出到交换区的量（KB/s）</li>
 </ul>
 </li>
-<li>io：I&#x2F;O 信息<ul>
+<li>io：I/O 信息<ul>
 <li>bi：块设备读取的块数（每秒）</li>
 <li>bo：块设备写入的块数（每秒）</li>
 </ul>
@@ -342,7 +338,7 @@
 <li>us：用户态 CPU 时间百分比</li>
 <li>sy：系统态 CPU 时间百分比</li>
 <li>id：空闲时间百分比</li>
-<li>wa：等待 I&#x2F;O 时间百分比</li>
+<li>wa：等待 I/O 时间百分比</li>
 <li>st：被盗用的时间百分比（虚拟化环境下）</li>
 </ul>
 </li>
@@ -354,7 +350,7 @@
 <li>%usr：用户态 CPU 时间百分比</li>
 <li>%nice：用于 niced 进程的 CPU 时间百分比</li>
 <li>%sys：系统态 CPU 时间百分比</li>
-<li>%iowait：等待 I&#x2F;O 完成的时间百分比</li>
+<li>%iowait：等待 I/O 完成的时间百分比</li>
 <li>%irq：硬中断处理时间百分比</li>
 <li>%soft：软中断处理时间百分比</li>
 <li>%steal：被其他虚拟机窃取的时间百分比</li>
@@ -375,56 +371,55 @@
 <li>Command：命令名称</li>
 </ul>
 </li>
-<li><p>iostat 命令显示 I&#x2F;O 设备的统计信息。-x 表示显示扩展的设备统计信息，-z 表示跳过所有零值的报告。</p>
+<li><p>iostat 命令显示 I/O 设备的统计信息。-x 表示显示扩展的设备统计信息，-z 表示跳过所有零值的报告。</p>
 <ul>
 <li>avg-cpu：平均 CPU 使用情况<ul>
 <li>%user：用户态 CPU 时间百分比</li>
 <li>%nice：用于 niced 进程的 CPU 时间百分比</li>
 <li>%system：系统态 CPU 时间百分比</li>
-<li>%iowait：等待 I&#x2F;O 完成的时间百分比</li>
+<li>%iowait：等待 I/O 完成的时间百分比</li>
 <li>%steal：被其他虚拟机窃取的时间百分比</li>
 <li>%idle：空闲时间百分比</li>
 </ul>
 </li>
 <li>Device：设备名称<ul>
-<li>r&#x2F;s：每秒读请求数</li>
-<li>w&#x2F;s：每秒写请求数</li>
-<li>rkB&#x2F;s：每秒读的千字节数</li>
-<li>wkB&#x2F;s：每秒写的千字节数</li>
-<li>rrqm&#x2F;s：每秒合并的读请求数</li>
-<li>wrqm&#x2F;s：每秒合并的写请求数</li>
+<li>r/s：每秒读请求数</li>
+<li>w/s：每秒写请求数</li>
+<li>rkB/s：每秒读的千字节数</li>
+<li>wkB/s：每秒写的千字节数</li>
+<li>rrqm/s：每秒合并的读请求数</li>
+<li>wrqm/s：每秒合并的写请求数</li>
 <li>r_await：读请求的平均等待时间（毫秒）</li>
 <li>w_await：写请求的平均等待时间（毫秒）</li>
 <li>aqu-sz：平均请求队列长度</li>
 <li>rareq-sz：平均读请求大小（千字节）</li>
 <li>wareq-sz：平均写请求大小（千字节）</li>
 <li>svctm：平均服务时间（毫秒）</li>
-<li>%util：设备利用率百分比（I&#x2F;O 请求的时间占比）</li>
+<li>%util：设备利用率百分比（I/O 请求的时间占比）</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sar -n DEV 1</span><br></pre></td></tr></table></figure>
-
 <p>sar 命令用于收集、报告和保存系统活动信息。sar -n DEV 1 命令的作用是监控网络接口的流量和性能指标。</p>
 <ul>
 <li>-n DEV：表示收集和报告网络设备（DEV）的统计信息。</li>
 <li>1：表示每隔 1 秒刷新一次信息。<br>输出字段解释：</li>
 <li>XX:XX:XX AM：时间戳，显示数据采集的时间点。</li>
 <li>IFACE：网络接口名称（如 eth0, lo 等）。</li>
-<li>rxpck&#x2F;s：每秒接收的数据包数（Packets received per second）。</li>
-<li>txpck&#x2F;s：每秒发送的数据包数（Packets transmitted per second）。</li>
-<li>rxkB&#x2F;s：每秒接收的千字节数（Kilobytes received per second）。</li>
-<li>txkB&#x2F;s：每秒发送的千字节数（Kilobytes transmitted per second）。</li>
-<li>rxcmp&#x2F;s：每秒接收的压缩数据包数（Compressed packets received per second）。</li>
-<li>txcmp&#x2F;s：每秒发送的压缩数据包数（Compressed packets transmitted per second）。</li>
-<li>rxmcst&#x2F;s：每秒接收的多播数据包数（Multicast packets received per second）。</li>
+<li>rxpck/s：每秒接收的数据包数（Packets received per second）。</li>
+<li>txpck/s：每秒发送的数据包数（Packets transmitted per second）。</li>
+<li>rxkB/s：每秒接收的千字节数（Kilobytes received per second）。</li>
+<li>txkB/s：每秒发送的千字节数（Kilobytes transmitted per second）。</li>
+<li>rxcmp/s：每秒接收的压缩数据包数（Compressed packets received per second）。</li>
+<li>txcmp/s：每秒发送的压缩数据包数（Compressed packets transmitted per second）。</li>
+<li>rxmcst/s：每秒接收的多播数据包数（Multicast packets received per second）。</li>
 <li>%ifutil：接口利用率百分比（Interface utilization percentage），即接口的带宽使用情况。</li>
 </ul>
 <h1 id="实验1"><a href="#实验1" class="headerlink" title="实验1"></a>实验1</h1><h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>使用“#”符号定义的预处理指令，如常量宏、内联函数、ifdef宏等。可以使用clang -E对源代码进行预处理（输出到控制台）。</p>
-<h3 id="const-char、char-const、char-const、const-char-const的区别"><a href="#const-char、char-const、char-const、const-char-const的区别" class="headerlink" title="const char、char const、char* const、const char* const的区别"></a>const char<em>、char const</em>、char* const、const char* const的区别</h3><ul>
-<li>const char* 和 char const*：<ul>
+<h3 id="const-char、char-const、char-const、const-char-const的区别"><a href="#const-char、char-const、char-const、const-char-const的区别" class="headerlink" title="const char、char const、char const、const char const的区别"></a>const char<em>、char const</em>、char<em> const、const char</em> const的区别</h3><ul>
+<li>const char<em> 和 char const</em>：<ul>
 <li>这两种写法是等价的，表示一个指向 const char 的指针。</li>
 <li>这个指针可以改变它所指向的对象，但不能通过这个指针修改对象的值。</li>
 </ul>
@@ -442,19 +437,17 @@
 <li>总结：“*”前的const决定指针变量对其指向目标的修改权限，变量名前的const决定对该变量的修改权限。</li>
 </ul>
 <h3 id="gdb使用"><a href="#gdb使用" class="headerlink" title="gdb使用"></a>gdb使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gdb --args ./matrix_multiply <span class="comment"># 运行gdb</span></span><br><span class="line">(gdb) r <span class="comment"># 或run，运行程序</span></span><br><span class="line">(gdb) q <span class="comment"># 或quit，结束调试</span></span><br><span class="line">(gdb) bt <span class="comment"># 或backtrace，获取堆栈的跟踪信息</span></span><br><span class="line">(gdb) p A-&gt;values[i][k] <span class="comment"># 或print，打印元素的值</span></span><br><span class="line"><span class="variable">$1</span> = 7</span><br><span class="line">(gdb) f 3 <span class="comment"># 或frame 3，切换当前所在的堆栈帧</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><h3 id="Write-up-2"><a href="#Write-up-2" class="headerlink" title="Write-up 2"></a>Write-up 2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span> &#123; <span class="comment">// What is the type of argv?</span></span><br><span class="line">  <span class="type">int</span> i = <span class="number">5</span>;</span><br><span class="line">  <span class="comment">// The &amp; operator here gets the address of i and stores it into pi</span></span><br><span class="line">  <span class="type">int</span>* pi = &amp;i;</span><br><span class="line">  <span class="comment">// The * operator here dereferences pi and stores the value -- 5 --</span></span><br><span class="line">  <span class="comment">// into j.</span></span><br><span class="line">  <span class="type">int</span> j = *pi;</span><br><span class="line"></span><br><span class="line">  <span class="type">char</span> c[] = <span class="string">&quot;6.172&quot;</span>;</span><br><span class="line">  <span class="type">char</span>* pc = c; <span class="comment">// Valid assignment: c acts like a pointer to c[0] here.</span></span><br><span class="line">  <span class="type">char</span> d = *pc;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;char d = %c\n&quot;</span>, d); <span class="comment">// What does this print?</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// compound types are read right to left in C.</span></span><br><span class="line">  <span class="comment">// pcp is a pointer to a pointer to a char, meaning that</span></span><br><span class="line">  <span class="comment">// pcp stores the address of a char pointer.</span></span><br><span class="line">  <span class="type">char</span>** pcp;</span><br><span class="line">  pcp = argv; <span class="comment">// Why is this assignment valid?</span></span><br><span class="line">  <span class="type">const</span> <span class="type">char</span>* pcc = c; <span class="comment">// pcc is a pointer to char constant</span></span><br><span class="line">  <span class="type">char</span> <span class="type">const</span>* pcc2 = c; <span class="comment">// What is the type of pcc2?</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// For each of the following, why is the assignment:</span></span><br><span class="line">  *pcc = <span class="string">&#x27;7&#x27;</span>; <span class="comment">// invalid?</span></span><br><span class="line">  pcc = *pcp; <span class="comment">// valid?</span></span><br><span class="line">  pcc = argv[<span class="number">0</span>]; <span class="comment">// valid?</span></span><br><span class="line"></span><br><span class="line">  <span class="type">char</span>* <span class="type">const</span> cp = c; <span class="comment">// cp is a const pointer to char</span></span><br><span class="line">  <span class="comment">// For each of the following, why is the assignment:</span></span><br><span class="line">  cp = *pcp; <span class="comment">// invalid?</span></span><br><span class="line">  cp = *argv; <span class="comment">// invalid?</span></span><br><span class="line">  *cp = <span class="string">&#x27;!&#x27;</span>; <span class="comment">// valid?</span></span><br><span class="line"></span><br><span class="line">  <span class="type">const</span> <span class="type">char</span>* <span class="type">const</span> cpc = c; <span class="comment">// cpc is a const pointer to char const</span></span><br><span class="line">  <span class="comment">// For each of the following, why is the assignment:</span></span><br><span class="line">  cpc = *pcp; <span class="comment">// invalid?</span></span><br><span class="line">  cpc = argv[<span class="number">0</span>]; <span class="comment">// invalid?</span></span><br><span class="line">  *cpc = <span class="string">&#x27;@&#x27;</span>; <span class="comment">// invalid?</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>argv是什么类型？<ul>
 <li>char* argv[]定义了argv是一个以char指针为基本类型的数组。简单来说，可以将其看做一个字符串的数组。</li>
 </ul>
 </li>
-<li>printf(“char d &#x3D; %c\n”, d)的输出结果是？<ul>
-<li>char d &#x3D; 6</li>
+<li>printf(“char d = %c\n”, d)的输出结果是？<ul>
+<li>char d = 6</li>
 </ul>
 </li>
-<li>pcp &#x3D; argv有效<ul>
+<li>pcp = argv有效<ul>
 <li>pcp是一个二阶指针，argv是一个char*的数组，而数组变量名即为首地址的指针，因此类型匹配。</li>
 </ul>
 </li>
@@ -462,39 +455,39 @@
 <li>pcc2 的类型是 const char<em>。const char</em> 和 char const* 是等价的，表示一个指向常量字符的指针（即通过该指针不能修改所指向的字符数据）。</li>
 </ul>
 </li>
-<li>*pcc &#x3D; ‘7’无效<ul>
+<li>*pcc = ‘7’无效<ul>
 <li>pcc 是一个指向 const char 的指针，不能通过这个指针修改它所指向的字符数据。</li>
 </ul>
 </li>
-<li>pcc &#x3D; *pcp有效<ul>
+<li>pcc = *pcp有效<ul>
 <li><em>pcp 的类型是 char</em>，pcc 是 const char*（指向常量字符的指针），类型匹配。</li>
 </ul>
 </li>
-<li>pcc &#x3D; argv[0]有效<ul>
+<li>pcc = argv[0]有效<ul>
 <li>argv[0] 的类型同样是是 char*，类型匹配。</li>
 </ul>
 </li>
-<li>cp &#x3D; *pcp无效<ul>
+<li>cp = *pcp无效<ul>
 <li>cp 是一个常量指针，意味着这个指针本身不能在初始化后被修改。</li>
 </ul>
 </li>
-<li>cp &#x3D; *argv无效<ul>
+<li>cp = *argv无效<ul>
 <li>原因同上。</li>
 </ul>
 </li>
-<li>*cp &#x3D; ‘!’有效<ul>
+<li>*cp = ‘!’有效<ul>
 <li>cp 指向 char，虽然指针本身是常量，但它所指向的数据可以被修改。</li>
 </ul>
 </li>
-<li>cpc &#x3D; *pcp无效<ul>
+<li>cpc = *pcp无效<ul>
 <li>cpc 是一个常量指针，意味着这个指针本身不能在初始化后被修改。</li>
 </ul>
 </li>
-<li>cpc &#x3D; argv[0]无效<ul>
+<li>cpc = argv[0]无效<ul>
 <li>原因同上；cpc 是一个常量指针，不能重新赋值。</li>
 </ul>
 </li>
-<li>*cpc &#x3D; ‘@’无效<ul>
+<li>*cpc = ‘@’无效<ul>
 <li>cpc 是一个指向 const char 的指针，所以它所指向的字符数据不能被修改。</li>
 </ul>
 </li>
@@ -502,35 +495,26 @@
 <h3 id="Write-up-3"><a href="#Write-up-3" class="headerlink" title="Write-up 3"></a>Write-up 3</h3><p>将sizes练习中的类型对应的指针大小打印出来。</p>
 <p>定义的<code>PRINT_SIZE</code>宏如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PRINT_SIZE(TYPE_NAME, TYPE) printf(<span class="string">&quot;size of %s : %zu bytes \n&quot;</span>, TYPE_NAME, sizeof(TYPE));</span></span><br></pre></td></tr></table></figure>
-
 <p>修改后的打印指针大小的代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">PRINT_SIZE(<span class="string">&quot;int pointer&quot;</span>, <span class="type">int</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;short pointer&quot;</span>, <span class="type">short</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;long pointer&quot;</span>, <span class="type">long</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;char pointer&quot;</span>, <span class="type">char</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;float pointer&quot;</span>, <span class="type">float</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;double pointer&quot;</span>, <span class="type">double</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;unsigned int pointer&quot;</span>, <span class="type">unsigned</span> <span class="type">int</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;long long pointer&quot;</span>, <span class="type">long</span> <span class="type">long</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uint8_t pointer&quot;</span>, <span class="type">uint8_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uint16_t pointer&quot;</span>, <span class="type">uint16_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uint32_t pointer&quot;</span>, <span class="type">uint32_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uint64_t pointer&quot;</span>, <span class="type">uint64_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uint_fast8_t pointer&quot;</span>, <span class="type">uint_fast8_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uint_fast16_t pointer&quot;</span>, <span class="type">uint_fast16_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;uintmax_t pointer&quot;</span>, <span class="type">uintmax_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;intmax_t pointer&quot;</span>, <span class="type">intmax_t</span> *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;__int128 pointer&quot;</span>, __int128 *);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;int[5] pointer&quot;</span>, &amp;x);</span><br><span class="line">PRINT_SIZE(<span class="string">&quot;student pointer&quot;</span>, &amp;you);</span><br></pre></td></tr></table></figure>
-
 <p>打印的结果如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">size of int pointer : 8 bytes </span><br><span class="line">size of short pointer : 8 bytes </span><br><span class="line">size of long pointer : 8 bytes </span><br><span class="line">size of char pointer : 8 bytes </span><br><span class="line">size of float pointer : 8 bytes </span><br><span class="line">size of double pointer : 8 bytes </span><br><span class="line">size of unsigned int pointer : 8 bytes </span><br><span class="line">size of long long pointer : 8 bytes </span><br><span class="line">size of uint8_t pointer : 8 bytes </span><br><span class="line">size of uint16_t pointer : 8 bytes </span><br><span class="line">size of uint32_t pointer : 8 bytes </span><br><span class="line">size of uint64_t pointer : 8 bytes </span><br><span class="line">size of uint_fast8_t pointer : 8 bytes </span><br><span class="line">size of uint_fast16_t pointer : 8 bytes </span><br><span class="line">size of uintmax_t pointer : 8 bytes </span><br><span class="line">size of intmax_t pointer : 8 bytes </span><br><span class="line">size of __int128 pointer : 8 bytes </span><br><span class="line">size of int[5] pointer : 8 bytes </span><br><span class="line">size of student pointer : 8 bytes</span><br></pre></td></tr></table></figure>
 <p>不难看出，指针的大小通常与其指向元素的类型无关，与操作系统的访存字长一致。</p>
 <h3 id="Write-up-4"><a href="#Write-up-4" class="headerlink" title="Write-up 4"></a>Write-up 4</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> *i, <span class="type">int</span> *j)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> temp = *i;</span><br><span class="line">  *i = *j;</span><br><span class="line">  *j = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> k = <span class="number">1</span>;</span><br><span class="line">  <span class="type">int</span> m = <span class="number">2</span>;</span><br><span class="line">  swap(&amp;k, &amp;m);</span><br><span class="line">  <span class="comment">// What does this print?</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;k = %d, m = %d\n&quot;</span>, k, m);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="Write-up-5"><a href="#Write-up-5" class="headerlink" title="Write-up 5"></a>Write-up 5</h3><p>输入<code>make clean; make</code>指令后的结果：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -f testbed.o matrix_multiply.o matrix_multiply .buildmode \</span><br><span class="line">        testbed.gcda matrix_multiply.gcda \</span><br><span class="line">        testbed.gcno matrix_multiply.gcno \</span><br><span class="line">        testbed.c.gcov matrix_multiply.c.gcov fasttime.h.gcov</span><br><span class="line">clang -O1 -DNDEBUG -Wall -std=c99 -D_POSIX_C_SOURCE=200809L -c testbed.c -o testbed.o</span><br><span class="line">clang -O1 -DNDEBUG -Wall -std=c99 -D_POSIX_C_SOURCE=200809L -c matrix_multiply.c -o matrix_multiply.o</span><br><span class="line">clang -o matrix_multiply testbed.o matrix_multiply.o -lrt -flto -fuse-ld=gold</span><br></pre></td></tr></table></figure>
-
 <p>对已生成文件进行清理并重新生成可执行文件。</p>
-<h3 id="Write-up-6"><a href="#Write-up-6" class="headerlink" title="Write-up 6"></a>Write-up 6</h3><p>得到的ASan的错误输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">=================================================================</span><br><span class="line">==5675==ERROR: LeakSanitizer: detected memory leaks</span><br><span class="line"></span><br><span class="line">Direct leak of 32 byte(s) in 2 object(s) allocated from:</span><br><span class="line">    #0 0x55f87f2df32e in __interceptor_malloc (/home/xby/hw1/matrix-multiply/matrix_multiply+0xa232e) (BuildId: e55aea457cfc44e1756fef8c1effbed264376bf8)</span><br><span class="line">    #1 0x55f87f31ad5a in make_matrix /home/xby/hw1/matrix-multiply/matrix_multiply.c:40:24</span><br><span class="line">    #2 0x7fe96a486d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16</span><br><span class="line"></span><br><span class="line">Indirect leak of 128 byte(s) in 8 object(s) allocated from:</span><br><span class="line">    #0 0x55f87f2df32e in __interceptor_malloc (/home/xby/hw1/matrix-multiply/matrix_multiply+0xa232e) (BuildId: e55aea457cfc44e1756fef8c1effbed264376bf8)</span><br><span class="line">    #1 0x55f87f31adf7 in make_matrix /home/xby/hw1/matrix-multiply/matrix_multiply.c:50:36</span><br><span class="line"></span><br><span class="line">Indirect leak of 64 byte(s) in 2 object(s) allocated from:</span><br><span class="line">    #0 0x55f87f2df32e in __interceptor_malloc (/home/xby/hw1/matrix-multiply/matrix_multiply+0xa232e) (BuildId: e55aea457cfc44e1756fef8c1effbed264376bf8)</span><br><span class="line">    #1 0x55f87f31ada2 in make_matrix /home/xby/hw1/matrix-multiply/matrix_multiply.c:47:32</span><br><span class="line">    #2 0x7fe96a486d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16</span><br><span class="line"></span><br><span class="line">SUMMARY: AddressSanitizer: 224 byte(s) leaked in 12 allocation(s).</span><br></pre></td></tr></table></figure>
-
+<h3 id="Write-up-6"><a href="#Write-up-6" class="headerlink" title="Write-up 6"></a>Write-up 6</h3><p>得到的ASan的错误输出如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">=================================================================</span><br><span class="line">==5675==ERROR: LeakSanitizer: detected memory leaks</span><br><span class="line"></span><br><span class="line">Direct leak of 32 byte(s) in 2 object(s) allocated from:</span><br><span class="line">    #0 0x55f87f2df32e in __interceptor_malloc (/home/xby/hw1/matrix-multiply/matrix_multiply+0xa232e) (BuildId: e55aea457cfc44e1756fef8c1effbed264376bf8)</span><br><span class="line">    #1 0x55f87f31ad5a in make_matrix /home/xby/hw1/matrix-multiply/matrix_multiply.c:40:24</span><br><span class="line">    #2 0x7fe96a486d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16</span><br><span class="line"></span><br><span class="line">Indirect leak of 128 byte(s) in 8 object(s) allocated from:</span><br><span class="line">    #0 0x55f87f2df32e in __interceptor_malloc (/home/xby/hw1/matrix-multiply/matrix_multiply+0xa232e) (BuildId: e55aea457cfc44e1756fef8c1effbed264376bf8)</span><br><span class="line">    #1 0x55f87f31adf7 in make_matrix /home/xby/hw1/matrix-multiply/matrix_multiply.c:50:36</span><br><span class="line"></span><br><span class="line">Indirect leak of 64 byte(s) in 2 object(s) allocated from:</span><br><span class="line">    #0 0x55f87f2df32e in __interceptor_malloc (/home/xby/hw1/matrix-multiply/matrix_multiply+0xa232e) (BuildId: e55aea457cfc44e1756fef8c1effbed264376bf8)</span><br><span class="line">    #1 0x55f87f31ada2 in make_matrix /home/xby/hw1/matrix-multiply/matrix_multiply.c:47:32</span><br><span class="line">    #2 0x7fe96a486d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16</span><br><span class="line"></span><br><span class="line">SUMMARY: AddressSanitizer: 224 byte(s) leaked in 12 allocation(s).</span><br></pre></td></tr></table></figure></p>
 <p>说明make_matrix生成的矩阵均发生了内存泄漏。</p>
 <h3 id="Write-up-7"><a href="#Write-up-7" class="headerlink" title="Write-up 7"></a>Write-up 7</h3><p>代码修改：在<code>make_matrix</code>函数中对新创建的矩阵添加初始化的操作。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Allocates a row-by-cols matrix and returns it</span></span><br><span class="line">matrix *<span class="title function_">make_matrix</span><span class="params">(<span class="type">int</span> rows, <span class="type">int</span> cols)</span></span><br><span class="line">&#123;</span><br><span class="line">  matrix *new_matrix = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(matrix));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Set the number of rows and columns</span></span><br><span class="line">  new_matrix-&gt;rows = rows;</span><br><span class="line">  new_matrix-&gt;cols = cols;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Allocate a buffer big enough to hold the matrix.</span></span><br><span class="line">  new_matrix-&gt;values = (<span class="type">int</span> **)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span> *) * rows);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    new_matrix-&gt;values[i] = (<span class="type">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * cols);</span><br><span class="line">    <span class="built_in">memset</span>(new_matrix-&gt;values[i], <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="type">int</span>) * cols);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> new_matrix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>运行<code>./matrix_multiply -p</code>后得到的结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Setup</span><br><span class="line">Matrix A: </span><br><span class="line">------------</span><br><span class="line">    3      7      8      1  </span><br><span class="line">    7      9      8      3  </span><br><span class="line">    1      2      6      7  </span><br><span class="line">    9      8      1      9  </span><br><span class="line">------------</span><br><span class="line">Matrix B: </span><br><span class="line">------------</span><br><span class="line">    1      3      0      1  </span><br><span class="line">    5      5      7      8  </span><br><span class="line">    0      1      9      8  </span><br><span class="line">    9      3      1      7  </span><br><span class="line">------------</span><br><span class="line">Running matrix_multiply_run()...</span><br><span class="line">---- RESULTS ----</span><br><span class="line">Result: </span><br><span class="line">------------</span><br><span class="line">   47     55    122    130  </span><br><span class="line">   79     83    138    164  </span><br><span class="line">   74     40     75    114  </span><br><span class="line">  130     95     74    144  </span><br><span class="line">------------</span><br><span class="line">---- END RESULTS ----</span><br><span class="line">Elapsed execution time: 0.000000 sec</span><br></pre></td></tr></table></figure>
-
 <p>经验算，结果正确。</p>
 <h3 id="Write-up-8"><a href="#Write-up-8" class="headerlink" title="Write-up 8"></a>Write-up 8</h3><p>代码修改：在进程结束前，对三个矩阵进行销毁：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">free_matrix(A);</span><br><span class="line">free_matrix(B);</span><br><span class="line">free_matrix(C);</span><br></pre></td></tr></table></figure>
-
 <p>使用<code>valgrind</code>再次运行得到的结果：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">==<span class="number">6130</span>== </span><br><span class="line">==<span class="number">6130</span>== HEAP SUMMARY:</span><br><span class="line">==<span class="number">6130</span>==     in use at <span class="built_in">exit</span>: <span class="number">0</span> bytes in <span class="number">0</span> blocks</span><br><span class="line">==<span class="number">6130</span>==   total heap usage: <span class="number">39</span> allocs, <span class="number">39</span> frees, <span class="number">1</span>,<span class="number">680</span> bytes allocated</span><br><span class="line">==<span class="number">6130</span>== </span><br><span class="line">==<span class="number">6130</span>== All heap blocks were freed -- no leaks are possible</span><br><span class="line">==<span class="number">6130</span>== </span><br><span class="line">==<span class="number">6130</span>== For lists of detected and suppressed errors, rerun with: -s</span><br><span class="line">==<span class="number">6130</span>== ERROR SUMMARY: <span class="number">0</span> errors from <span class="number">0</span> contexts (suppressed: <span class="number">0</span> from <span class="number">0</span>)</span><br></pre></td></tr></table></figure></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/">系统优化</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软件系统优化学习笔记（一）</div></div></a></div><div class="next-post pull-right"><a href="/articles/483f996fd92b/" title="软件系统优化学习笔记（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">软件系统优化学习笔记（二）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/articles/3e574f739121/" title="系统优化综述调研报告"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">系统优化综述调研报告</div></div></a></div><div><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-04</div><div class="title">软件系统优化学习笔记（一）</div></div></a></div><div><a href="/articles/483f996fd92b/" title="软件系统优化学习笔记（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-10</div><div class="title">软件系统优化学习笔记（二）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">实验系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%B8%8E%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">系统安装与准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">问题与解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E8%81%94%E7%B3%BB"><span class="toc-number">2.2.</span> <span class="toc-text">常用工具命令操作联系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C1"><span class="toc-number">3.</span> <span class="toc-text">实验1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-number">3.1.</span> <span class="toc-text">相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">3.1.1.</span> <span class="toc-text">预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const-char%E3%80%81char-const%E3%80%81char-const%E3%80%81const-char-const%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.1.2.</span> <span class="toc-text">const char、char const、char* const、const char* const的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">gdb使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">3.2.</span> <span class="toc-text">实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">Write-up 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-3"><span class="toc-number">3.2.2.</span> <span class="toc-text">Write-up 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-4"><span class="toc-number">3.2.3.</span> <span class="toc-text">Write-up 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-5"><span class="toc-number">3.2.4.</span> <span class="toc-text">Write-up 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-6"><span class="toc-number">3.2.5.</span> <span class="toc-text">Write-up 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-7"><span class="toc-number">3.2.6.</span> <span class="toc-text">Write-up 7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-8"><span class="toc-number">3.2.7.</span> <span class="toc-text">Write-up 8</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 徐博阳</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">==<span class="number">6130</span>== </span><br><span class="line">==<span class="number">6130</span>== HEAP SUMMARY:</span><br><span class="line">==<span class="number">6130</span>==     in use at <span class="built_in">exit</span>: <span class="number">0</span> bytes in <span class="number">0</span> blocks</span><br><span class="line">==<span class="number">6130</span>==   total heap usage: <span class="number">39</span> allocs, <span class="number">39</span> frees, <span class="number">1</span>,<span class="number">680</span> bytes allocated</span><br><span class="line">==<span class="number">6130</span>== </span><br><span class="line">==<span class="number">6130</span>== All heap blocks were freed -- no leaks are possible</span><br><span class="line">==<span class="number">6130</span>== </span><br><span class="line">==<span class="number">6130</span>== For lists of detected and suppressed errors, rerun with: -s</span><br><span class="line">==<span class="number">6130</span>== ERROR SUMMARY: <span class="number">0</span> errors from <span class="number">0</span> contexts (suppressed: <span class="number">0</span> from <span class="number">0</span>)</span><br></pre></td></tr></table></figure></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/">系统优化</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软件系统优化学习笔记（一）</div></div></a></div><div class="next-post pull-right"><a href="/articles/483f996fd92b/" title="软件系统优化学习笔记（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">软件系统优化学习笔记（二）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/articles/3e574f739121/" title="系统优化综述调研报告"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">系统优化综述调研报告</div></div></a></div><div><a href="/articles/cdc6bdbe4f28/" title="软件系统优化学习笔记（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-04</div><div class="title">软件系统优化学习笔记（一）</div></div></a></div><div><a href="/articles/483f996fd92b/" title="软件系统优化学习笔记（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-10</div><div class="title">软件系统优化学习笔记（二）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">实验系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%B8%8E%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">系统安装与准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">问题与解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E8%81%94%E7%B3%BB"><span class="toc-number">2.2.</span> <span class="toc-text">常用工具命令操作联系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C1"><span class="toc-number">3.</span> <span class="toc-text">实验1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-number">3.1.</span> <span class="toc-text">相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">3.1.1.</span> <span class="toc-text">预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const-char%E3%80%81char-const%E3%80%81char-const%E3%80%81const-char-const%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.1.2.</span> <span class="toc-text">const char、char const、char const、const char const的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">gdb使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">3.2.</span> <span class="toc-text">实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">Write-up 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-3"><span class="toc-number">3.2.2.</span> <span class="toc-text">Write-up 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-4"><span class="toc-number">3.2.3.</span> <span class="toc-text">Write-up 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-5"><span class="toc-number">3.2.4.</span> <span class="toc-text">Write-up 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-6"><span class="toc-number">3.2.5.</span> <span class="toc-text">Write-up 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-7"><span class="toc-number">3.2.6.</span> <span class="toc-text">Write-up 7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-up-8"><span class="toc-number">3.2.7.</span> <span class="toc-text">Write-up 8</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 徐博阳</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],

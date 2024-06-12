@@ -179,7 +179,20 @@
 </ul>
 </li>
 <li>循环分块：将矩阵分为若干个块，对每一块分别进行计算，可以有效提高程序的局部性，增加Cache命中率并提高其性能。分块的大小可以根据多级缓存的具体大小进行设定，以达到最优的Cache利用。</li>
-<li>并行分治：利用公式<br>$$\begin{align}<br>\begin{pmatrix}<br>C_{00} &amp; C_{01} \ C_{10} &amp; C_{11}<br>\end{pmatrix} &amp;&#x3D; \begin{pmatrix}<br>A_{00} &amp; A_{01} \ A_{10} &amp; A_{11}<br>\end{pmatrix} \cdot \begin{pmatrix}<br>B_{00} &amp; B_{01} \ B_{10} &amp; B_{11}<br>\end{pmatrix} \<br>&amp;&#x3D; \begin{pmatrix}<br>A_{00}B_{00} &amp; A_{00}B_{01} \ A_{10}B_{00} &amp; A_{10}B_{01}<br>\end{pmatrix} + \begin{pmatrix}<br>A_{01}B_{10} &amp; A_{01}B_{11} \ A_{11}B_{10} &amp; A_{11}B_{11}<br>\end{pmatrix}<br>\end{align}$$<br>可以将两个$n \times n$矩阵相乘的操作分解为8个$n&#x2F;2 \times n&#x2F;2$矩阵的乘法和一次$n \times n$矩阵的加法，从而利用分治的方法，对矩阵乘法进行优化。<ul>
+<li>并行分治：利用公式<script type="math/tex; mode=display">\begin{align}
+\begin{pmatrix}
+C_{00} & C_{01} \\ C_{10} & C_{11}
+\end{pmatrix} &= \begin{pmatrix}
+A_{00} & A_{01} \\ A_{10} & A_{11}
+\end{pmatrix} \cdot \begin{pmatrix}
+B_{00} & B_{01} \\ B_{10} & B_{11}
+\end{pmatrix} \\
+&= \begin{pmatrix}
+A_{00}B_{00} & A_{00}B_{01} \\ A_{10}B_{00} & A_{10}B_{01}
+\end{pmatrix} + \begin{pmatrix}
+A_{01}B_{10} & A_{01}B_{11} \\ A_{11}B_{10} & A_{11}B_{11}
+\end{pmatrix}
+\end{align}</script>可以将两个$n \times n$矩阵相乘的操作分解为8个$n/2 \times n/2$矩阵的乘法和一次$n \times n$矩阵的加法，从而利用分治的方法，对矩阵乘法进行优化。<ul>
 <li>可以使用cilk_spawn（创建并行任务）和cilk_sync（等待并行任务全部完成）实现并行优化。</li>
 <li>分治的递归边界粒度如果设置过小，会导致较大的函数调用开销，导致分治算法的性能达不到预期。因此需要将该粒度适度扩大，以平衡开销。</li>
 </ul>
